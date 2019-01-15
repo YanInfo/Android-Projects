@@ -1,0 +1,21 @@
+ CREATE TABLE `user` (
+  `id` int(10) NOT NULL AUTO_INCREMENT,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`)
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8
+
+
+//json数据格式
+{ "username":"admin" ,"password":"123" }
+
+//xml数据格式
+<?xml version="1.0" encoding="UTF-8"?>
+<users id="1">
+        <username>冰与火之歌</username>
+        <password>乔治马丁</password>
+        <username>冰与火之歌123</username>
+        <password>乔治马丁</password>
+</users>
+

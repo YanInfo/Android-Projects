@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="  User:" />
+
+        <EditText
+            android:id="@+id/L_user"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Input your username"/>
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="  Password:" />
+
+        <EditText
+            android:id="@+id/L_password"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Input your password"/>
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="EnsurePw:" />
+
+        <EditText
+            android:id="@+id/L_password1"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Ensure your password"/>
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="  Telephone:" />
+
+        <EditText
+            android:id="@+id/L_phone"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Input your phone" />
+    </TableRow>
+
+    <TableRow android:layout_marginTop="20dp">
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_margin="12dp"
+                android:text="  Sex:"
+                />
+
+            <RadioGroup
+                android:id="@+id/radioGroup"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/R_Man"
+                    android:layout_height="wrap_content"
+                    android:layout_width="100dp"
+                    android:text="MAN"
+                    android:checked="true"/>
+
+                <RadioButton
+                    android:id="@+id/R_Woman"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="WOMEN"/>
+            </RadioGroup>
+
+    </TableRow>
+
+        <TableRow android:layout_marginTop="20dp">
+                <TextView
+                    android:id="@+id/un"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:layout_margin="12dp"
+                    android:text="  University:"
+                    />
+
+                <Spinner
+                    android:id="@+id/spinner"
+                    android:layout_width="12dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"/>
+
+        </TableRow>
+
+    <LinearLayout android:layout_marginTop="12dp">
+
+
+        <Button
+            android:id="@+id/L_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_span="3"
+            android:layout_weight="1"
+            android:background="#00CED1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:text="Register" />
+
+
+    </LinearLayout>
+
+</TableLayout>

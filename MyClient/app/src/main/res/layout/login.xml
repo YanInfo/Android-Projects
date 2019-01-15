@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="  User:" />
+
+        <EditText
+            android:id="@+id/user"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Input your username"/>
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_margin="12dp"
+            android:text="  Password:" />
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:hint="Input your password"/>
+    </TableRow>
+
+
+
+    <TableRow android:layout_margin="12dp">
+        <CheckBox
+            android:id="@+id/remember"
+            android:layout_height="wrap_content"
+            />
+
+        <TextView
+            android:layout_height="wrap_content"
+            android:text="Remeber Me" />
+    </TableRow>
+
+    <LinearLayout android:layout_marginTop="12dp">
+
+
+        <Button
+            android:id="@+id/register"
+            android:layout_width="77dp"
+            android:layout_height="wrap_content"
+            android:layout_span="3"
+            android:layout_weight="1"
+            android:background="#00CED1"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="20dp"
+            android:text="Register" />
+
+        <Button
+            android:id="@+id/login"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_span="3"
+            android:layout_weight="1"
+            android:background="#00CED1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="25dp"
+            android:text="Login" />
+
+    </LinearLayout>
+
+
+</TableLayout>
