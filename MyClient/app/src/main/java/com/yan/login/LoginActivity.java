@@ -1,3 +1,4 @@
+
 package com.yan.login;
 
 import android.annotation.SuppressLint;
@@ -19,23 +20,21 @@ import android.widget.Toast;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-
 /**
  * @author zhangyan
  * @data 2019/1/10
  */
 public class LoginActivity extends Activity {
 
-    private EditText user, password;
-    private Button login, register;
-
+    private EditText user;
+    private EditText password;
+    private Button login;
+    private Button register;
     private SharedPreferences pref;
-    private SharedPreferences.Editor editor;
     private CheckBox rembemberPass;
-    
     public static final String TAG = "LoginActivity";
     private static final String URLLOGIN = "xxx/login/json/data";
-    
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -48,67 +47,30 @@ public class LoginActivity extends Activity {
 
         //记住密码
         boolean isRemember = pref.getBoolean("remember_password", false);
-        if(isRemember) {
+        if (isRemember) {
             String user1 = pref.getString("user", "");
-            String password1 = pref.getString("password","");
+            String password1 = pref.getString("password", "");
             user.setText(user1);
             password.setText(password1);
             rembemberPass.setChecked(true);
         }
-
-        /*//登录按钮监听
-        login.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String inputText_user = user.getText().toString();
-                String inputText_password = password.getText().toString();
-
-                //判断用户名密码是否匹配
-                if (inputText_user.equals("admin") && inputText_password.equals("123"))
-                {
-                    editor = pref.edit();
-                    //登录成功记住密码,并且保存
-                    if (rembemberPass.isChecked()) {
-                        editor.putBoolean("remember_password", true);
-                        editor.putString("user1", user.toString());
-                        editor.putString("password1", password.toString());
-                    } else {
-                        editor.clear();
-                    }
-                    editor.commit();
-
-
-                    Log.d(TAG, "login successful!!");
-                    //登录成功，跳转到成功页面
-                    startActivity(new Intent(LoginActivity.this, SuccessActivity.class));
-
-
-                } else {
-                    Toast.makeText(LoginActivity.this, "Sorry, please try again!!!",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-        });*/
 
         login.setOnClickListener(new View.OnClickListener() {
             @Override
 
             //登录按键的响应
             public void onClick(View v) {
-                String [] data=null;
 
+                String[] data = null;
                 String inputUser = user.getText().toString();
                 String inputPassword = password.getText().toString();
 
-
-                if(TextUtils.isEmpty(inputUser))
-                {
-                    Toast.makeText(LoginActivity.this,"请输入用户名",Toast.LENGTH_SHORT).show();
-                }else if(TextUtils.isEmpty(inputPassword))
-                {
-                    Toast.makeText(LoginActivity.this,"请输入密码",Toast.LENGTH_SHORT).show();
-                }else {
-                    data=new String[]{inputUser, inputPassword};
+                if (TextUtils.isEmpty(inputUser)) {
+                    Toast.makeText(LoginActivity.this, "请输入用户名", Toast.LENGTH_SHORT).show();
+                } else if (TextUtils.isEmpty(inputPassword)) {
+                    Toast.makeText(LoginActivity.this, "请输入密码", Toast.LENGTH_SHORT).show();
+                } else {
+                    data = new String[]{inputUser, inputPassword};
                     @SuppressLint("HandlerLeak") Handler handler = new Handler() {
                         @Override
                         public void handleMessage(Message msg) {
@@ -128,7 +90,8 @@ public class LoginActivity extends Activity {
                                 case 3:
                                     Log.e("input error", "url为空");
                                     break;
-                                case 4:Toast.makeText(LoginActivity.this, "连接超时", Toast.LENGTH_SHORT).show();
+                                case 4:
+                                    Toast.makeText(LoginActivity.this, "连接超时", Toast.LENGTH_SHORT).show();
                                     break;
                                 default:
                             }
@@ -151,28 +114,27 @@ public class LoginActivity extends Activity {
 
 
         /**
-        * 跳转到注册页面
-        */
+         * 跳转到注册页面
+         */
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                 Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
-                 startActivity(intent);
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
 
             }
         });
-        
+
         /**
-        * 初始化
-        */
-        private void init(){
+         * 初始化
+         */
+        private void init () {
             login = findViewById(R.id.login);
             register = findViewById(R.id.register);
             user = findViewById(R.id.user);
             password = findViewById(R.id.password);
             rembemberPass = findViewById(R.id.remember);
         }
-
 
     }
 }
