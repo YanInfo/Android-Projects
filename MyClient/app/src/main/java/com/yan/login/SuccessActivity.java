@@ -9,16 +9,14 @@ import android.webkit.WebViewClient;
 
 public class SuccessActivity extends Activity {
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState){
        super.onCreate(savedInstanceState);
        requestWindowFeature(Window.FEATURE_NO_TITLE);
        setContentView(R.layout.success);
-
-        WebView success = findViewById(R.id.success);      //bushi layout
-
+        
+        WebView success = findViewById(R.id.success);
+        
         success.getSettings().setJavaScriptEnabled(true);
         success.getSettings().setAppCacheEnabled(true);
         success.getSettings().setCacheMode(WebSettings.LOAD_DEFAULT);
@@ -26,18 +24,13 @@ public class SuccessActivity extends Activity {
 
         success.loadUrl("http://www.yanblog.info/");
 
-
         success.setWebViewClient(new WebViewClient(){
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
-
                 view.loadUrl(url);
                 return true;
             }
         });
-
-
-
+        
     }
-
 }
