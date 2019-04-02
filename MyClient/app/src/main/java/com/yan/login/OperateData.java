@@ -1,10 +1,8 @@
 package com.yan.login;
 
 import android.util.Log;
-
 import org.json.JSONException;
 import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -25,13 +23,12 @@ public class OperateData {
      * @param stringArray  将string数组转成json格式字符串
      * @return
      */
-
     public String stringTojson(String stringArray[])
-    {    JSONObject jsonObject=null;
+    {    JSONObject jsonObject = null;
         if(stringArray == null) {
             return "";
         }
-        jsonObject=new JSONObject();
+        jsonObject = new JSONObject();
         try {
             jsonObject.put("username",stringArray[0]);
             jsonObject.put("password",stringArray[1]);
@@ -51,8 +48,8 @@ public class OperateData {
     {
         int type=1;
         try {
-            JSONObject responseJson=new JSONObject(jsonString);
-            type=responseJson.getInt("type");
+            JSONObject responseJson = new JSONObject(jsonString);
+            type = responseJson.getInt("type");
             Log.i("type",""+type);
         } catch (JSONException e) {
             e.printStackTrace();
@@ -65,36 +62,26 @@ public class OperateData {
      *功能：发送jsonString到服务器并解析回应
      * @param jsonString mh url
      * handler 参数规定
-     *                   msg.what:
-     *                    0：服务器连接失败
-     *                    1：注册/登录成功 跳转页面
-     *                    2：用户已存在/登录失败
-     *                    3：地址为空
-     *                    4： 连接超时
+     *  msg.what:
+     *  0：服务器连接失败
+     *  1：注册/登录成功 跳转页面
+     *  2：用户已存在/登录失败
+     *  3：地址为空
+     *  4： 连接超时
      *
      */
     public void sendData(final  String jsonString, final android.os.Handler mh,final URL url) {
 
-
         if (url==null){
             mh.sendEmptyMessage(3);
         }else{
-
-
             new Thread(new Runnable() {
+                
                 @Override
-
-
                 public void run() {
-
-
-
+                    
                     HttpURLConnection httpURLConnection = null;
-
-
-
                     BufferedReader bufferedReader = null;
-
                     try {
                         httpURLConnection = (HttpURLConnection) url.openConnection();
                         // 设置连接超时时间
@@ -117,16 +104,14 @@ public class OperateData {
                         httpURLConnection.connect();
 
 
-
                         //发送数据
                         Log.i("JSONString",jsonString);
                         DataOutputStream os = new DataOutputStream(httpURLConnection.getOutputStream());
-
                         os.writeBytes(jsonString);
                         os.flush();
                         os.close();
-                        Log.i("状态码：",""+httpURLConnection.getResponseCode());
-
+                        Log.i("状态码：","" + httpURLConnection.getResponseCode());
+                        
                         if (httpURLConnection.getResponseCode() == HttpURLConnection.HTTP_OK) {
 
                             bufferedReader = new BufferedReader(new InputStreamReader(httpURLConnection.getInputStream()));
@@ -136,7 +121,7 @@ public class OperateData {
                                 response.append(temp);
                                 Log.i("Main", response.toString());
                             }
-                            int type=jsonToint(response.toString());
+                            int type = jsonToint(response.toString());
                             //根据
                             switch (type)
                             {
@@ -146,19 +131,9 @@ public class OperateData {
                                     break;
                                 default:
                             }
-
-
-
-
-                        }else{
-
+                        } else {
                             mh.sendEmptyMessage(0);
-
-
                         }
-
-
-
                     } catch (MalformedURLException e) {
                         e.printStackTrace();
                     } catch (IOException e) {
@@ -178,8 +153,6 @@ public class OperateData {
                             httpURLConnection.disconnect();
                         }
                     }
-
-
                 }
             }).start();
         }
