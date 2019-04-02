@@ -19,9 +19,7 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import org.json.JSONObject;
-
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
@@ -33,7 +31,6 @@ import java.util.List;
  * @author zhangyan
  * @date 2019/1/10
  */
-
 public class RegisterActivity extends Activity implements View.OnClickListener {
 
     private Button loginRegister;
@@ -44,12 +41,10 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
     private String sex;
     private String city;
     private String[] str = null;
-
     private TextView textView;
     private Spinner spinner;
     private List<String> dataList;
     private ArrayAdapter<String> adapter;
-    
     private static final String URLREGISTER = "xxx/register/json/data";
 
     @Override
@@ -120,7 +115,6 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
                             operateData.sendData(jsonString, handler, url);
                         }
 
-
                 //保存数据到SharedPreferences
                 SharedPreferences.Editor editor = getSharedPreferences("register", MODE_PRIVATE).edit();
                 editor.putString("User", user);
@@ -145,7 +139,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
         });
 
 
-        //Spinner
+        //Spinner，这里最好写在配置文件中
         spinner = (Spinner) findViewById(R.id.spinner);
         textView = (TextView) findViewById(R.id.un);
 
@@ -185,9 +179,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 textView.setText("请选择您的城市");
-
             }
-
         });
     }
 
@@ -198,9 +190,8 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
      */
     private String stringArraytoJson(String[] strings) {
 
-        if (strings==null){return "";}
+        if (strings == null){return "";}
         String js = "[{"+"username:"+strings[0]+"password:"+strings[1];
-
         return js;
     }
     
@@ -221,7 +212,7 @@ public class RegisterActivity extends Activity implements View.OnClickListener {
 
     }
 
-    }
+}
 
 
 
