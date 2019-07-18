@@ -12,7 +12,6 @@
 3,git add demo/
 4,git commit -m [massage]
 5,git pull origin master
-6,git push origin master
 
 
 检出：
